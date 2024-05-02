@@ -1,8 +1,7 @@
 package com.ilmsg.library.bootstrap;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.ilmsg.library.models.Author;
@@ -13,7 +12,7 @@ import com.ilmsg.library.repositories.BookRepository;
 import com.ilmsg.library.repositories.PublisherRepository;
 
 @Component
-public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
+public class DevBootstrap implements CommandLineRunner {
 
     @Autowired
     private BookRepository bookRepository;
@@ -23,7 +22,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     private PublisherRepository publisherRepository;
 
     @Override
-    public void onApplicationEvent(ContextRefreshedEvent event) {
+    public void run(String... args) throws Exception {
         initData();
     }
 
